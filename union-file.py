@@ -1,3 +1,4 @@
+import argparse
 from sys import stdin
 
 class UF:
@@ -25,6 +26,11 @@ class UF:
 
 
 if __name__ == "__main__":
+    parser = argparse.ArgumentParser(description='SMTH')
+    parser.add_argument('view',type=str,help='Show how is a programm working?')
+    
+    args = parser.parse_args()
+
     n = int(input())
     uf = UF(n)
 
@@ -34,7 +40,10 @@ if __name__ == "__main__":
             continue
         else:
             uf.union(p,q)
-        print(p,q,uf.id)
+        if args.view == 'y':
+            print(p,q,uf.id)
+        else:
+            print(p,q)
 
 
     print(uf.count)
