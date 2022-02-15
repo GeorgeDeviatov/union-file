@@ -26,10 +26,17 @@ class UF:
 
 
 if __name__ == "__main__":
-    parser = argparse.ArgumentParser(description='SMTH')
-    parser.add_argument('view',type=str,help='Show how is a programm working?')
+    try:
+        parser = argparse.ArgumentParser(description='SMTH')
+        parser.add_argument('view',type=str,help='Show how is a programm working?')
     
-    args = parser.parse_args()
+        args = parser.parse_args()
+        if args.view == 'y':
+            show = True
+        else:
+            show = False
+    except:
+        show = False
 
     n = int(input())
     uf = UF(n)
@@ -37,10 +44,11 @@ if __name__ == "__main__":
     for line in stdin:
         p,q = map(int,line.split())
         if uf.is_connected(p,q):
+            print(p,q)
             continue
         else:
             uf.union(p,q)
-        if args.view == 'y':
+        if show:
             print(p,q,uf.id)
         else:
             print(p,q)
