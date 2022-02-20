@@ -1,4 +1,4 @@
-# union-file
+# union-find
 
 
 A command for a test:
